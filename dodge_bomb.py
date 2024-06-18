@@ -84,9 +84,9 @@ def main():
         screen.blit(kk_img, kk_rct)    
         bomb_rct.move_ip(vx,vy)
         yoko,tate=check_bound(bomb_rct)
-        if not tate:#縦方向にはみ出たら
+        if not tate:#縦方向にはみ出たら向きを変える
             vy *= -1
-        if not yoko:#横方向にはみ出たら
+        if not yoko:#横方向にはみ出たら向きを変える
             vx *= -1 
         screen.blit(bomb, bomb_rct)
         pg.display.update()
