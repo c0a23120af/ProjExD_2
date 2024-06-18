@@ -37,7 +37,7 @@ def main():
     kk_rct = kk_img.get_rect()
     kk_rct.center = 900, 400
     clock = pg.time.Clock()
-
+#爆弾の描写
     bomb= pg.Surface((20,20))
     pg.draw.circle(bomb, (255,0,0),(10,10),10)
     bomb.set_colorkey((0, 0, 0))
@@ -78,6 +78,14 @@ def main():
             sum_mv[0] += 5
         """
         kk_rct.move_ip(sum_mv)
+        if check_bound(kk_rct)!=(True,True):
+            kk_rct.move_ip(-sum_mv[0],-sum_mv[1])
+        bomb_rct.move_ip(vx,vy)
+        yoko,tate=check_bound(bomb_rct)
+        if not tate:
+            vx += -1
+        if not yoko:
+            vy += -1
         screen.blit(kk_img, kk_rct)
         pg.display.update()
         tmr += 1
